@@ -44,3 +44,4 @@ def get_mask_account(account_number: str) -> str:
 
 # Проверяем
 print(get_mask_account("73654108430135874305"))
+print(get_mask_account("73654108430135875768"))
