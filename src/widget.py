@@ -22,6 +22,7 @@ def mask_account_card(info_account_card: str) -> str:
         masked_number = get_mask_card_number(card_number)
         return f"{card_type} {masked_number}"
 
+
 # Проверяем
 print(mask_account_card("Maestro 1596837868705199"))
 print(mask_account_card("Счет 64686473678894779589"))
@@ -38,11 +39,12 @@ def get_date(date_string: str) -> str:
     и возвращает строку с датой в формате "ДД.ММ.ГГГГ"."""
 
     # Разбиваем строку по символу 'T' и берем первую часть (дату)
-    date_part = date_string.split('T')[0]
+    date_part = date_string.split("T")[0]
 
     # Разбиваем дату по '-' и переставляем части
-    year, month, day = date_part.split('-')
+    year, month, day = date_part.split("-")
     return f"{day}.{month}.{year}"
+
 
 # Проверяем
 print(get_date("2024-03-11T02:26:18.671407"))
