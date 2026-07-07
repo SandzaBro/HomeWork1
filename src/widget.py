@@ -43,3 +43,6 @@ def get_date(date_string: str) -> str:
     # Разбиваем дату по '-' и переставляем части
     year, month, day = date_part.split('-')
     return f"{day}.{month}.{year}"
+
+# Проверяем
+print(get_date("2024-03-11T02:26:18.671407"))
