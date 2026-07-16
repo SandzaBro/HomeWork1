@@ -1,4 +1,6 @@
-def filter_by_state(list_dicts, state='EXECUTED'):
+from typing import List, Dict, Any
+
+def filter_by_state(list_dicts: List[Dict[str, Any]], state: str = 'EXECUTED') -> List[Dict[str, Any]]:
 
     """Функция принимает список словарей и опционально значение для ключа state(по умолчанию
        'EXECUTED') и возвращает новый список словарей, содержащий только те словари, у которых
