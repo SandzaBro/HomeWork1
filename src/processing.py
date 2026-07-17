@@ -31,13 +31,13 @@ canceled_items = filter_by_state(list_of_transaction, 'CANCELED')
 print(canceled_items)
 
 
-def sort_by_date(transactions: List[Dict[str, Any]], argument: bool = True) -> List[Dict[str, Any]]:
+def sort_by_date(transactions: List[Dict[str, Any]], sort_order: bool = True) -> List[Dict[str, Any]]:
 
     """Функция, которая принимает список словарей и необязательный параметр,
     задающий порядок сортировки (по умолчанию — убывание) и возвращает новый список,
     отсортированный по дате (date)."""
 
-    return sorted(transactions, key=lambda x: x['date'], reverse=argument)
+    return sorted(transactions, key=lambda x: x['date'], reverse=sort_order)
 
 
 # Список транзакций
