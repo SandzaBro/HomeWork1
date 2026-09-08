@@ -9,8 +9,3 @@ def valid_card():
 @pytest.fixture
 def account_number():
     return "73654108430135874305"
-
-
-@pytest.fixture
-def empty_string():
-    return ""
