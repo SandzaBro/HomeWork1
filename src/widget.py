@@ -39,21 +39,21 @@ def get_date(date_string: str) -> str:
     и возвращает строку с датой в формате "ДД.ММ.ГГГГ"."""
 
     # Находим разделитель даты и времени (T или пробел)
-    if 'T' in date_string:
-        date_part = date_string.split('T')[0]
-    elif ' ' in date_string:
-        date_part = date_string.split(' ')[0]
+    if "T" in date_string:
+        date_part = date_string.split("T")[0]
+    elif " " in date_string:
+        date_part = date_string.split(" ")[0]
     else:
         date_part = date_string
 
-     # Определяем разделитель даты (-, / или .)
+    # Определяем разделитель даты (-, / или .)
     parts = []  # Инициализируем переменную parts
-    if '-' in date_part:
-        parts = date_part.split('-')
-    elif '/' in date_part:
-        parts = date_part.split('/')
-    elif '.' in date_part:
-        parts = date_part.split('.')
+    if "-" in date_part:
+        parts = date_part.split("-")
+    elif "/" in date_part:
+        parts = date_part.split("/")
+    elif "." in date_part:
+        parts = date_part.split(".")
     else:
         # Если разделитель не найден, возвращаем исходную строку
         return date_string
@@ -65,6 +65,7 @@ def get_date(date_string: str) -> str:
     else:
         # Если не хватает частей, возвращаем исходную строку
         return date_string
+
 
 # Проверяем
 print(get_date("2024-03-11T02:26:18.671407"))
