@@ -1,4 +1,4 @@
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(info_account_card: str) -> str:
@@ -15,7 +15,7 @@ def mask_account_card(info_account_card: str) -> str:
         return info_account_card
 
     # Проверка наличия слова "Счет" в входных данных и их маскировка
-    if "Счет" in card_type or "счет" in card_type:
+    if "счет" in card_type.lower():
         masked_number = get_mask_account(card_number)
         return f"{card_type} {masked_number}"
     else:
@@ -38,12 +38,33 @@ def get_date(date_string: str) -> str:
     """Функция, которая принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407"
     и возвращает строку с датой в формате "ДД.ММ.ГГГГ"."""
 
-    # Разбиваем строку по символу 'T' и берем первую часть (дату)
-    date_part = date_string.split("T")[0]
+    # Находим разделитель даты и времени (T или пробел)
+    if "T" in date_string:
+        date_part = date_string.split("T")[0]
+    elif " " in date_string:
+        date_part = date_string.split(" ")[0]
+    else:
+        date_part = date_string
 
-    # Разбиваем дату по '-' и переставляем части
-    year, month, day = date_part.split("-")
-    return f"{day}.{month}.{year}"
+    # Определяем разделитель даты (-, / или .)
+    parts = []  # Инициализируем переменную parts
+    if "-" in date_part:
+        parts = date_part.split("-")
+    elif "/" in date_part:
+        parts = date_part.split("/")
+    elif "." in date_part:
+        parts = date_part.split(".")
+    else:
+        # Если разделитель не найден, возвращаем исходную строку
+        return date_string
+
+    # Проверяем, что есть все три части (год, месяц, день)
+    if len(parts) >= 3:
+        year, month, day = parts[0], parts[1], parts[2]
+        return f"{day}.{month}.{year}"
+    else:
+        # Если не хватает частей, возвращаем исходную строку
+        return date_string
 
 
 # Проверяем
