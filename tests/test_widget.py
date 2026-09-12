@@ -3,7 +3,6 @@ import pytest
 from src.widget import get_date, mask_account_card
 
 
-# Параметризованные тесты для карт (проверяем логику распознавания типа)
 @pytest.mark.parametrize(
     "input_data, expected_output",
     [
@@ -20,7 +19,6 @@ def test_mask_account_card_types_card(input_data: str, expected_output: str) -> 
     assert mask_account_card(input_data) == expected_output
 
 
-# Параметризованные тесты для счетов
 @pytest.mark.parametrize(
     "input_data, expected_output",
     [
@@ -37,7 +35,6 @@ def test_mask_account_card_types_account(input_data: str, expected_output: str) 
     assert mask_account_card(input_data) == expected_output
 
 
-# Тест на обработку некорректных данных
 @pytest.mark.parametrize(
     "invalid_input",
     [
@@ -53,12 +50,10 @@ def test_mask_account_card_types_account(input_data: str, expected_output: str) 
 )
 def test_mask_account_card_invalid_input(invalid_input: str) -> None:
     """Тестирование устойчивости к некорректным входным данным"""
-    # Функция должна вернуть исходную строку или не упасть
     result = mask_account_card(invalid_input)
     assert isinstance(result, str)
 
 
-# Параметризованные тесты для различных дат
 @pytest.mark.parametrize(
     "input_date, expected_output",
     [
@@ -75,7 +70,6 @@ def test_get_date_valid_dates(input_date: str, expected_output: str) -> None:
     assert get_date(input_date) == expected_output
 
 
-# Тесты с разными форматами разделителей
 @pytest.mark.parametrize(
     "input_date, expected_output",
     [
