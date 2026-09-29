@@ -139,19 +139,39 @@ def empty_transactions() -> List[Dict[str, Any]]:
 
 
 @pytest.fixture
-def transactions_without_currency() -> List[Dict[str, Any]]:
-    """Фикстура для некорректных транзакций без поля currency"""
+def transactions_without_target_currency() -> List[Dict[str, Any]]:
+    """Фикстура для списока транзакций без валюты USD"""
     return [
-        {"id": 1, "description": "no amount"},
+        {
+            "id": 1,
+            "operationAmount": {"currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+        },
+        {
+            "id": 2,
+            "operationAmount": {"currency": {"name": "евро", "code": "EUR"}},
+            "description": "Перевод со счета на счет",
+        },
+    ]
+
+
+@pytest.fixture
+def transactions_without_currency_field() -> List[Dict[str, Any]]:
+    """Фикстура для транзакций без поля currency"""
+    return [
+        {"id": 1, "description": "нет operationAmount"},
         {"id": 2, "operationAmount": {}},
         {"id": 3, "operationAmount": {"currency": {}}},
     ]
 
 
 @pytest.fixture
-def transactions_without_description() -> List[Dict[str, Any]]:
-    """Фикстура для транзакций без поля description"""
+def expected_descriptions() -> List[str]:
+    """Фикстура ожидаемой последовательности описаний для базового набора транзакций"""
     return [
-        {"id": 1, "operationAmount": {"currency": {"code": "USD"}}},
-        {"id": 2, "description": ""},
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет",
+        "Перевод с карты на карту",
+        "Перевод организации",
     ]
