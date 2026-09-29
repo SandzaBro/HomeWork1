@@ -1,6 +1,6 @@
 from typing import Any, Dict, Iterator, List
 
-from check_example_generators import transactions
+from src.check_example_generators import transactions
 
 
 def filter_by_currency(transactions: List[Dict[str, Any]], currency: str = "USD") -> Iterator[Dict[str, Any]]:
@@ -15,9 +15,9 @@ def filter_by_currency(transactions: List[Dict[str, Any]], currency: str = "USD"
 
 
 # Пример использования функции
-# usd_transactions = filter_by_currency(transactions, "USD")
-# for _ in range(2):
-#     print(next(usd_transactions))
+usd_transactions = filter_by_currency(transactions, "USD")
+for _ in range(2):
+    print(next(usd_transactions))
 
 
 def transaction_descriptions(transactions: List[Dict[str, Any]]) -> Iterator[str]:
@@ -29,9 +29,9 @@ def transaction_descriptions(transactions: List[Dict[str, Any]]) -> Iterator[str
 
 
 # Пример использования функции
-# descriptions = transaction_descriptions(transactions)
-# for _ in range(5):
-#     print(next(descriptions))
+descriptions = transaction_descriptions(transactions)
+for _ in range(5):
+    print(next(descriptions))
 
 
 def card_number_generator(start: int, stop: int) -> Iterator[str]:
@@ -43,5 +43,5 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
 
 
 # Пример использования функции
-# for card_number in card_number_generator(1, 5):
-#     print(card_number)
+for card_number in card_number_generator(1, 5):
+    print(card_number)

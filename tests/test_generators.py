@@ -62,13 +62,6 @@ def test_card_number_generator_format(start: int, stop: int) -> None:
         assert len(card) == 19
 
 
-# def test_returns_iterator(self, transactions: List[Dict[str, Any]]) -> None:
-#     """Тестирование функции, которая возвращает итератор (генератор), поддерживающий next()."""
-#     result = filter_by_currency(transactions, "USD")
-#     assert isinstance(result, Generator)
-#     assert next(result)["id"] == 939719570
-
-
 def test_filters_by_currency_default_usd(transactions: List[Dict[str, Any]]) -> None:
     """Тестирование, когда не указана валюта (по умолчанию используется USD)"""
     assert list(filter_by_currency(transactions)) == list(filter_by_currency(transactions, "USD"))
@@ -92,21 +85,6 @@ def test_transaction_descriptions_all(transactions: List[Dict[str, Any]], expect
 def test_transaction_descriptions_empty_list(empty_transactions: List[Dict[str, Any]]) -> None:
     """Тестирование пустого списка"""
     assert list(transaction_descriptions(empty_transactions)) == []
-
-
-# def test_transaction_descriptions_without_description() -> None:
-#     """Тестирование, если ключ description отсутствует"""
-#     broken: List[Dict[str, Any]] = [{"id": 1}, {"id": 2, "description": ""}]
-#     assert list(transaction_descriptions(broken)) == ["", ""]
-
-
-# def test_stops_iteration(self, transactions: List[Dict[str, Any]]) -> None:
-#     """После выдачи всех описаний генератор бросает StopIteration."""
-#     gen = transaction_descriptions(transactions)
-#     for _ in range(len(transactions)):
-#         next(gen)
-#     with pytest.raises(StopIteration):
-#         next(gen)
 
 
 def test_card_number_generator_1_to_5() -> None:
