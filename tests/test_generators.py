@@ -73,12 +73,12 @@ def test_filters_by_currency_empty_list(empty_transactions: List[Dict[str, Any]]
 
 
 def test_filters_by_currency_without_currency(transactions_without_currency_field: List[Dict[str, Any]]) -> None:
-    """Тестирование транзакции без currency пропускаются без исключений."""
+    """Тестирование транзакции без currency пропускаются без исключений"""
     assert list(filter_by_currency(transactions_without_currency_field, "USD")) == []
 
 
 def test_transaction_descriptions_all(transactions: List[Dict[str, Any]], expected_descriptions: List[str]) -> None:
-    """Тестирование базового набора описания выдаются по порядку и совпадают с ожидаемыми."""
+    """Тестирование базового набора описания, выдаются по порядку и совпадают с ожидаемыми"""
     assert list(transaction_descriptions(transactions)) == expected_descriptions
 
 

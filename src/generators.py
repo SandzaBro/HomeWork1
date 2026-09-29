@@ -1,6 +1,6 @@
 from typing import Any, Dict, Iterator, List
 
-from src.check_example_generators import transactions
+from check_example_generators import transactions
 
 
 def filter_by_currency(transactions: List[Dict[str, Any]], currency: str = "USD") -> Iterator[Dict[str, Any]]:
@@ -22,7 +22,7 @@ for _ in range(2):
 
 def transaction_descriptions(transactions: List[Dict[str, Any]]) -> Iterator[str]:
     """Функция, который принимает список словарей с транзакциями и возвращает
-    описание каждой операции по очереди"""
+    описание каждой операции поочереди"""
 
     for transaction in transactions:
         yield transaction.get("description", "")
